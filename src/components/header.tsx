@@ -1,5 +1,5 @@
 import React from 'react';
-import AuSoccer2023 from '../images/au-soccer-camp-2023.jpg';
+import AuSoccer2023 from '../images/au-soccer-camp.jpg';
 
 const Header: React.FC = () => {
     const currentYear = new Date().getFullYear();
