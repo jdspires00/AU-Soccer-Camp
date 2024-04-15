@@ -1,0 +1,22 @@
+[
+  {
+    "coach": "Coach Carter",
+    "campers": ["John Doe", "Jane Smith", "Emily Davis", "Mike Brown", "Lisa White"]
+  },
+  {
+    "coach": "Coach Taylor",
+    "campers": ["Tom Wilson", "Anna Bell", "Kevin Long", "Sarah Green", "Cristiano Ronaldo"]
+  },
+  {
+    "coach": "Coach Smith",
+    "campers": ["Chris King", "Rachel Casey", "Steve Marsh", "Nick Grey", "Alice Blue"]
+  },
+  {
+    "coach": "Coach Johnson",
+    "campers": ["Laura West", "George Best", "Matt Bright", "Jenny Stone", "Lee Dixon"]
+  },
+  {
+    "coach": "Coach Lee",
+    "campers": ["Brian Hall", "Susan Fox", "Olivia Hunt", "Mark Duke", "Brendan Aaronson"]
+  }
+]
