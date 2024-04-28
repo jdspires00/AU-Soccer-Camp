@@ -4,6 +4,9 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import CoachCamperDropdown from './coachAndPlayer';
 
+//Need to get the Coach, Player, and is Goalie form the coach camper dropdown
+
+
 const PlayerSkillEval = () => {
   const [skills, setSkills] = useState({
     dribbling: null,
@@ -15,12 +18,16 @@ const PlayerSkillEval = () => {
     workEthic: null,
     teamPlayer: null,
     sportsmanship: null,
-    // Add more skills as needed
   });
 
   const [comments, setComments] = useState('');
   const [techComments, setTechComments] = useState('');
+
+  // Add new states for coach, camper, and goalie
+  const [selectedCoach, setSelectedCoach] = useState<any>(null);
+  const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
   const [isGoalie, setIsGoalie] = useState(false);
+
 
   const handleSkillChange = (e: any, skill: any) => {
     setSkills({ ...skills, [skill]: e.value });
@@ -28,14 +35,31 @@ const PlayerSkillEval = () => {
 
   const handleSubmit = () => {
     // You would handle form submission here
-    console.log(skills, comments);
+    if (!skills.dribbling || !skills.shooting || !skills.passing || !skills.vision || !skills.touch || !skills.communication || !skills.workEthic || !skills.teamPlayer || !skills.sportsmanship) {
+      alert('Please fill in all skill levels');
+      return;
+    } else if (!comments || !techComments) {
+      alert('Please fill in all comments');
+      return;
+    } else {
+      if(isGoalie == true) {
+        let Goalkeeper = 'Goalkeeper';
+
+      } else{
+      console.log(skills, comments, techComments);
+      }
+    }
   };
 
   const skillLevels = ["1 - Needs Attention", "2 - Average", "3 - Good", "4 - Very Good", "5 - Outstanding"]; // Skill levels from 1 to 5
 
   return (
     <div>
-      <CoachCamperDropdown />
+      <CoachCamperDropdown
+        setSelectedCoach={setSelectedCoach}
+        setSelectedCamper={setSelectedCamper}
+        setIsGoalie={setIsGoalie}
+      />
       <h3 className='separator'>Player Technical Skill Evaluation</h3>
       <div className="skill-evaluation">
         <div className="skill">
@@ -187,7 +211,7 @@ const PlayerSkillEval = () => {
         </div>
       </div>
       <div className='commentField'>
-          <h4>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
+          <h4>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
           <InputTextarea
             value={comments}
             onChange={(e) => setComments(e.target.value)}
