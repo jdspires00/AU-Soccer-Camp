@@ -3,9 +3,14 @@ import { RadioButton } from 'primereact/radiobutton';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import CoachCamperDropdown from './coachAndPlayer';
+ import { CSVLink, CSVDownload } from 'react-csv';
 
-//Need to get the Coach, Player, and is Goalie form the coach camper dropdown
-
+//Need to get the Coach, Player, and is Goalie from coachAndPlayer.tsx
+interface PlayerSkillEvalProps {
+  selectCoach: any;
+  selectCamper: string | null;
+  isGoalie: boolean;
+}
 
 const PlayerSkillEval = () => {
   const [skills, setSkills] = useState({
@@ -23,11 +28,13 @@ const PlayerSkillEval = () => {
   const [comments, setComments] = useState('');
   const [techComments, setTechComments] = useState('');
 
-  // Add new states for coach, camper, and goalie
+  // Get the selected coach and camper from the CoachCamperDropdown component
   const [selectedCoach, setSelectedCoach] = useState<any>(null);
   const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
   const [isGoalie, setIsGoalie] = useState(false);
 
+  // Since selectedCoach is an object, we need to get the coach name from the object
+  const coachName = selectedCoach ? selectedCoach.coach : null;
 
   const handleSkillChange = (e: any, skill: any) => {
     setSkills({ ...skills, [skill]: e.value });
@@ -44,9 +51,16 @@ const PlayerSkillEval = () => {
     } else {
       if(isGoalie == true) {
         let Goalkeeper = 'Goalkeeper';
-
+        console.log("In Goalie loop")
+        console.log(selectedCamper, Goalkeeper, coachName, skills, comments, techComments);
+        //set data to a json object named PlayerSkillEvalFor{selectedCamper}
+        [selectedCamper, Goalkeeper, coachName, skills, comments, techComments].map((item) => console.log(item));
+        localStorage.setItem(`PlayerSkillEvalFor${selectedCamper}`, JSON.stringify({selectedCamper, Goalkeeper, coachName, skills, comments, techComments}));
       } else{
-      console.log(skills, comments, techComments);
+        console.log("Not In Goalie loop");
+        console.log(isGoalie);
+        // set data to a json object named PlayerSkillEvalFor{selectedCamper}
+        [selectedCamper, coachName, skills, comments, techComments].map((item) => console.log(item));
       }
     }
   };
@@ -55,11 +69,31 @@ const PlayerSkillEval = () => {
 
   return (
     <div>
-      <CoachCamperDropdown
-        setSelectedCoach={setSelectedCoach}
-        setSelectedCamper={setSelectedCamper}
-        setIsGoalie={setIsGoalie}
-      />
+      <div>
+        <CoachCamperDropdown
+          setSelectCoach={setSelectedCoach}
+          setSelectCamper={setSelectedCamper}
+        />
+        <h3>Is the player a Goalie?</h3>
+        <RadioButton
+          inputId="goalie-yes"
+          name="goalie"
+          value={true}
+          onChange={(e) => setIsGoalie(e.value)}
+          checked={isGoalie === true}
+          className='ml-8'
+        />
+        <label htmlFor="goalie-yes" className='yes-label'>Yes</label>
+        <RadioButton
+          inputId="goalie-no"
+          name="goalie"
+          value={false}
+          onChange={(e) => setIsGoalie(e.value)}
+          checked={isGoalie === false}
+          className='ml-8'
+        />
+        <label htmlFor="goalie-no" className="no-label">No</label>
+      </div>  
       <h3 className='separator'>Player Technical Skill Evaluation</h3>
       <div className="skill-evaluation">
         <div className="skill">

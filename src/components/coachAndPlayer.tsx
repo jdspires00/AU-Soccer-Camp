@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import data from '../data/list.json';
 import { Checkbox } from 'primereact/checkbox';
+import { on } from 'events';
 
 
 interface CoachCamperDropdownProps {
-  setSelectedCoach: (coach: any) => void;
-  setSelectedCamper: (camper: string | null) => void;
-  setIsGoalie: (isGoalie: boolean) => void;
+  setSelectCoach: (coach: any) => void;
+  setSelectCamper: (camper: string | null) => void;
 }
 
-const CoachCamperDropdown = ({}:CoachCamperDropdownProps) => {
-  const [selectedCoach, setSelectedCoach] = useState<any>(null); // Change type to any
+const CoachCamperDropdown: React.FC<CoachCamperDropdownProps> = ({ setSelectCoach, setSelectCamper }) => {
+  const [selectedCoach, setSelectedCoach] = useState<any>(null);
   const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
-  const [isGoalie, setIsGoalie] = useState(false);
 
   const coaches = data.map((item: any) => ({ label: item.coach, value: item }));
+
+  useEffect(() => {
+    setSelectCoach(selectedCoach);
+  }, [selectedCoach]);
+
+  useEffect(() => {
+    setSelectCamper(selectedCamper);
+  }, [selectedCamper]);
 
   const onCoachChange = (e: any) => {
     setSelectedCoach(e.value);
@@ -43,15 +50,6 @@ const CoachCamperDropdown = ({}:CoachCamperDropdownProps) => {
           onChange={onCamperChange}
           placeholder="Select a Camper"
         />
-      )}
-      {selectedCamper && (
-        <div>
-          <h4>Goalkeeper?</h4>
-          <Checkbox
-            checked={isGoalie}
-            onChange={(e) => setIsGoalie(e.checked || false)}
-          />
-        </div>
       )}
     </div>
   );
