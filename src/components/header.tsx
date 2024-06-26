@@ -1,13 +1,15 @@
 import React from 'react';
-import AuSoccer2023 from '../images/au-soccer-camp.jpg';
+import AuSoccer from '../images/au-soccer-camp.jpg';
+import { Button } from 'primereact/button';
 
 const Header: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
     return (
         <header style={{ backgroundColor: '#F57920', textAlign: 'center' }}>
-            <img src={AuSoccer2023} alt="AU Soccer Camp" style={{ width: '500px', height: '300px' }} />
-            <h1>{currentYear} Anderson University Soccer Camp Player Evaluation</h1>
+            <img src={AuSoccer} alt="AU Soccer Camp" style={{ width: '1334px', height: '348px', marginTop: '30px'}} />
+            <h1 style={{marginBottom: "10px"}}>{currentYear} Anderson University Soccer Camp Player Evaluation</h1>
+            
         </header>
     );
 };

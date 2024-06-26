@@ -3,14 +3,6 @@ import { RadioButton } from 'primereact/radiobutton';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import CoachCamperDropdown from './coachAndPlayer';
- import { CSVLink, CSVDownload } from 'react-csv';
-
-//Need to get the Coach, Player, and is Goalie from coachAndPlayer.tsx
-interface PlayerSkillEvalProps {
-  selectCoach: any;
-  selectCamper: string | null;
-  isGoalie: boolean;
-}
 
 const PlayerSkillEval = () => {
   const [skills, setSkills] = useState({
@@ -60,7 +52,7 @@ const PlayerSkillEval = () => {
         console.log("Not In Goalie loop");
         console.log(isGoalie);
         // set data to a json object named PlayerSkillEvalFor{selectedCamper}
-        [selectedCamper, coachName, skills, comments, techComments].map((item) => console.log(item));
+        localStorage.setItem(`PlayerSkillEvalFor${selectedCamper}`, JSON.stringify({selectedCamper, coachName, skills, comments, techComments}));
       }
     }
   };
@@ -70,10 +62,17 @@ const PlayerSkillEval = () => {
   return (
     <div>
       <div>
+        <Button 
+          label="Coach Fridley/Coach Derrick" 
+          style={{left:"85%", position:"absolute"}}
+          onClick={() => window.location.href = '/coachPage'}
+        />
+        <div style={{display: "inline", left:"10%"}}>
         <CoachCamperDropdown
           setSelectCoach={setSelectedCoach}
           setSelectCamper={setSelectedCamper}
         />
+        </div>
         <h3>Is the player a Goalie?</h3>
         <RadioButton
           inputId="goalie-yes"
