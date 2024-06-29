@@ -1,23 +1,22 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
 import PlayerSkillEval from './components/playerSkillEval';
 import CoachPage from './pages/coachPage';
 import './styles/projStyles.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<PlayerSkillEval />} />
-          <Route path="/coachPage" element={<CoachPage />} />
-        </Routes>
-      </div>
-    </Router>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<PlayerSkillEval />} />
+            <Route path="/coachPage" element={<CoachPage />} />
+          </Routes>
+        </div>
+      </Router>
   );
-}
+};
 
 export default App;

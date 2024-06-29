@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { RadioButton } from 'primereact/radiobutton';
-import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { RadioButton } from 'primereact/radiobutton';
 import CoachCamperDropdown from './coachAndPlayer';
+import { db } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
-const PlayerSkillEval = () => {
+const PlayerSkillEval: React.FC = () => {
   const [skills, setSkills] = useState({
     dribbling: null,
     shooting: null,
@@ -19,21 +21,15 @@ const PlayerSkillEval = () => {
 
   const [comments, setComments] = useState('');
   const [techComments, setTechComments] = useState('');
-
-  // Get the selected coach and camper from the CoachCamperDropdown component
   const [selectedCoach, setSelectedCoach] = useState<any>(null);
   const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
   const [isGoalie, setIsGoalie] = useState(false);
 
-  // Since selectedCoach is an object, we need to get the coach name from the object
-  const coachName = selectedCoach ? selectedCoach.coach : null;
-
-  const handleSkillChange = (e: any, skill: any) => {
+  const handleSkillChange = (e: any, skill: string) => {
     setSkills({ ...skills, [skill]: e.value });
   };
 
-  const handleSubmit = () => {
-    // You would handle form submission here
+  const handleSubmit = async () => {
     if (!skills.dribbling || !skills.shooting || !skills.passing || !skills.vision || !skills.touch || !skills.communication || !skills.workEthic || !skills.teamPlayer || !skills.sportsmanship) {
       alert('Please fill in all skill levels');
       return;
@@ -41,62 +37,69 @@ const PlayerSkillEval = () => {
       alert('Please fill in all comments');
       return;
     } else {
-      if(isGoalie == true) {
-        let Goalkeeper = 'Goalkeeper';
-        console.log("In Goalie loop")
-        console.log(selectedCamper, Goalkeeper, coachName, skills, comments, techComments);
-        //set data to a json object named PlayerSkillEvalFor{selectedCamper}
-        [selectedCamper, Goalkeeper, coachName, skills, comments, techComments].map((item) => console.log(item));
-        localStorage.setItem(`PlayerSkillEvalFor${selectedCamper}`, JSON.stringify({selectedCamper, Goalkeeper, coachName, skills, comments, techComments}));
-      } else{
-        console.log("Not In Goalie loop");
-        console.log(isGoalie);
-        // set data to a json object named PlayerSkillEvalFor{selectedCamper}
-        localStorage.setItem(`PlayerSkillEvalFor${selectedCamper}`, JSON.stringify({selectedCamper, coachName, skills, comments, techComments}));
+      console.log('Submitting evaluation for:', selectedCamper);
+      try {
+        const submission = {
+          selectedCamper,
+          coachName: selectedCoach ? selectedCoach.coach : null,
+          goalkeeper: isGoalie ? 'Goalkeeper' : 'Field Player',
+          skills,
+          comments,
+          techComments,
+        };
+    
+        console.log('Preparing to submit:', submission);
+        await addDoc(collection(db, 'PlayerSkillEvaluations'), submission);
+        console.log('Submission successful');
+        alert('Submission successful!');
+      } catch (error) {
+        console.error('Error adding document: ', error);
       }
     }
   };
 
-  const skillLevels = ["1 - Needs Attention", "2 - Average", "3 - Good", "4 - Very Good", "5 - Outstanding"]; // Skill levels from 1 to 5
+  const skillLevels = ["1 - Needs Attention", "2 - Average", "3 - Good", "4 - Very Good", "5 - Outstanding"];
 
   return (
     <div>
-      <div>
+      <div style={{alignItems:'center'}}>
         <Button 
           label="Coach Fridley/Coach Derrick" 
-          style={{left:"85%", position:"absolute"}}
+          style={{left:"85%"}}
           onClick={() => window.location.href = '/coachPage'}
         />
-        <div style={{display: "inline", left:"10%"}}>
-        <CoachCamperDropdown
-          setSelectCoach={setSelectedCoach}
-          setSelectCamper={setSelectedCamper}
-        />
+        <div style={{textAlign:'center'}}>
+          <CoachCamperDropdown
+            setSelectCoach={setSelectedCoach}
+            setSelectCamper={setSelectedCamper}
+          />
         </div>
-        <h3>Is the player a Goalie?</h3>
-        <RadioButton
-          inputId="goalie-yes"
-          name="goalie"
-          value={true}
-          onChange={(e) => setIsGoalie(e.value)}
-          checked={isGoalie === true}
-          className='ml-8'
-        />
-        <label htmlFor="goalie-yes" className='yes-label'>Yes</label>
-        <RadioButton
-          inputId="goalie-no"
-          name="goalie"
-          value={false}
-          onChange={(e) => setIsGoalie(e.value)}
-          checked={isGoalie === false}
-          className='ml-8'
-        />
-        <label htmlFor="goalie-no" className="no-label">No</label>
-      </div>  
-      <h3 className='separator'>Player Technical Skill Evaluation</h3>
+        <div style={{textAlign:'center'}}>
+          <h3>Is the player a Goalie?</h3>
+          <RadioButton
+            inputId="goalie-yes"
+            name="goalie"
+            value={true}
+            onChange={(e) => setIsGoalie(e.value)}
+            checked={isGoalie === true}
+            className='ml-8'
+          />
+          <label htmlFor="goalie-yes" className='yes-label'>Yes</label>
+          <RadioButton
+            inputId="goalie-no"
+            name="goalie"
+            value={false}
+            onChange={(e) => setIsGoalie(e.value)}
+            checked={isGoalie === false}
+            className='ml-8'
+          />
+          <label htmlFor="goalie-no" className="no-label">No</label>
+        </div>
+      </div>
+      <h3 className='separator' style={{textAlign:'center'}}>Player Technical Skill Evaluation</h3>
       <div className="skill-evaluation">
         <div className="skill">
-          <h4>DRIBBLING</h4>
+          <h4 style={{textAlign:'center'}}>DRIBBLING</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -111,7 +114,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>SHOOTING</h4>
+          <h4 style={{textAlign:'center'}}>SHOOTING</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -126,7 +129,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>PASSING</h4>
+          <h4 style={{textAlign:'center'}}>PASSING</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -141,7 +144,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>VISION</h4>
+          <h4 style={{textAlign:'center'}}>VISION</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -156,7 +159,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>TOUCH</h4>
+          <h4 style={{textAlign:'center'}}>TOUCH</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -171,19 +174,20 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className='commentField'>
-          <h4>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
+          <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
           <InputTextarea
             value={techComments}
             onChange={(e) => setTechComments(e.target.value)}
             rows={5}
             cols={30}
+            style={{marginLeft:'41%'}}
           />
         </div>
       </div>
-      <h3 className='separator'>Non-Technical Skill Evaluation</h3>
+      <h3 className='separator' style={{textAlign:'center'}}>Non-Technical Skill Evaluation</h3>
       <div className="skill-evaluation">
         <div className="skill">
-          <h4>COMMUNICATION</h4>
+          <h4 style={{textAlign:'center'}}>COMMUNICATION</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -198,7 +202,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>WORK ETHIC</h4>
+          <h4 style={{textAlign:'center'}}>WORK ETHIC</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -213,7 +217,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>TEAM PLAYER</h4>
+          <h4 style={{textAlign:'center'}}>TEAM PLAYER</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -228,7 +232,7 @@ const PlayerSkillEval = () => {
           ))}
         </div>
         <div className="skill">
-          <h4>SPORTSMANSHIP</h4>
+          <h4 style={{textAlign:'center'}}>SPORTSMANSHIP</h4>
           {skillLevels.map((level) => (
             <div key={level} className="p-field-radiobutton radList">
               <RadioButton
@@ -244,15 +248,16 @@ const PlayerSkillEval = () => {
         </div>
       </div>
       <div className='commentField'>
-          <h4>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
+          <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
           <InputTextarea
             value={comments}
             onChange={(e) => setComments(e.target.value)}
             rows={5}
             cols={30}
+            style={{marginLeft:'41%'}}
           />
         </div>
-      <Button label="Submit" onClick={handleSubmit} />
+      <Button label="Submit" onClick={handleSubmit} style={{marginLeft: '47%'}} />
     </div>
   );
 };
