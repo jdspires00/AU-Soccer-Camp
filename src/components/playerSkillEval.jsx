@@ -6,7 +6,7 @@ import CoachCamperDropdown from './coachAndPlayer';
 import { db } from '../firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
-const PlayerSkillEval: React.FC = () => {
+function PlayerSkillEval() {
   const [skills, setSkills] = useState({
     dribbling: null,
     shooting: null,
@@ -21,11 +21,11 @@ const PlayerSkillEval: React.FC = () => {
 
   const [comments, setComments] = useState('');
   const [techComments, setTechComments] = useState('');
-  const [selectedCoach, setSelectedCoach] = useState<any>(null);
-  const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
+  const [selectedCoach, setSelectedCoach] = useState(null);
+  const [selectedCamper, setSelectedCamper] = useState(null);
   const [isGoalie, setIsGoalie] = useState(false);
 
-  const handleSkillChange = (e: any, skill: string) => {
+  const handleSkillChange = (e, skill) => {
     setSkills({ ...skills, [skill]: e.value });
   };
 
@@ -39,6 +39,7 @@ const PlayerSkillEval: React.FC = () => {
     } else {
       console.log('Submitting evaluation for:', selectedCamper);
       try {
+        console.log('Submitting evaluation for camper in try:', selectedCamper);
         const submission = {
           selectedCamper,
           coachName: selectedCoach ? selectedCoach.coach : null,
@@ -47,8 +48,14 @@ const PlayerSkillEval: React.FC = () => {
           comments,
           techComments,
         };
-    
+        
         console.log('Preparing to submit:', submission);
+        const docRef = await addDoc(collection(db, "users"), {
+          first: "Ada",
+          last: "Lovelace",
+          born: 1815,
+        });
+        console.log("Document written with ID: ", docRef.id);
         await addDoc(collection(db, 'PlayerSkillEvaluations'), submission);
         console.log('Submission successful');
         alert('Submission successful!');

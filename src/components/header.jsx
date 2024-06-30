@@ -1,7 +1,7 @@
 import React from 'react';
 import AuSoccer from '../images/au-soccer-camp.jpg';
 
-const Header: React.FC = () => {
+const Header = () => {
     const currentYear = new Date().getFullYear();
 
     return (
