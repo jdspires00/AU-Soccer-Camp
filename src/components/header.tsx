@@ -1,6 +1,5 @@
 import React from 'react';
 import AuSoccer from '../images/au-soccer-camp.jpg';
-import { Button } from 'primereact/button';
 
 const Header: React.FC = () => {
     const currentYear = new Date().getFullYear();

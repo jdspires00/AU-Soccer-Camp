@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import data from '../data/list.json';
-import { Checkbox } from 'primereact/checkbox';
-import { on } from 'events';
-
 
 interface CoachCamperDropdownProps {
   setSelectCoach: (coach: any) => void;
