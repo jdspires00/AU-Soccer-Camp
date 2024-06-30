@@ -3,8 +3,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
-const CoachPage: React.FC = () => {
-  const [submissions, setSubmissions] = useState<any[]>([]);
+function CoachPage() {
+  const [submissions, setSubmissions] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

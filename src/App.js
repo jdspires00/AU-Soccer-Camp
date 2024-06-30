@@ -5,7 +5,7 @@ import PlayerSkillEval from './components/playerSkillEval';
 import CoachPage from './pages/coachPage';
 import './styles/projStyles.css';
 
-const App: React.FC = () => {
+function App() {
   return (
       <Router>
         <div className="App">

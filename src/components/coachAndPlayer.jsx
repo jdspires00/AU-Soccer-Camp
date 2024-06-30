@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import data from '../data/list.json';
 
-interface CoachCamperDropdownProps {
-  setSelectCoach: (coach: any) => void;
-  setSelectCamper: (camper: string | null) => void;
-}
+const CoachCamperDropdown = ({ setSelectCoach, setSelectCamper }) => {
+  const [selectedCoach, setSelectedCoach] = useState(null);
+  const [selectedCamper, setSelectedCamper] = useState(null);
 
-const CoachCamperDropdown: React.FC<CoachCamperDropdownProps> = ({ setSelectCoach, setSelectCamper }) => {
-  const [selectedCoach, setSelectedCoach] = useState<any>(null);
-  const [selectedCamper, setSelectedCamper] = useState<string | null>(null);
-
-  const coaches = data.map((item: any) => ({ label: item.coach, value: item }));
+  const coaches = data.map((item) => ({ label: item.coach, value: item }));
 
   useEffect(() => {
     setSelectCoach(selectedCoach);
@@ -21,12 +16,12 @@ const CoachCamperDropdown: React.FC<CoachCamperDropdownProps> = ({ setSelectCoac
     setSelectCamper(selectedCamper);
   }, [selectedCamper]);
 
-  const onCoachChange = (e: any) => {
+  const onCoachChange = (e) => {
     setSelectedCoach(e.value);
     setSelectedCamper(null); // Reset selected camper
   };
 
-  const onCamperChange = (e: any) => {
+  const onCamperChange = (e) => {
     setSelectedCamper(e.value);
   };
 
@@ -43,7 +38,7 @@ const CoachCamperDropdown: React.FC<CoachCamperDropdownProps> = ({ setSelectCoac
       {selectedCoach && (
         <Dropdown
           value={selectedCamper}
-          options={selectedCoach.campers.map((camper: string) => ({ label: camper, value: camper }))}
+          options={selectedCoach.campers.map((camper) => ({ label: camper, value: camper }))}
           onChange={onCamperChange}
           placeholder="Select a Camper"
         />
