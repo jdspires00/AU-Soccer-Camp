@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <header style={{ backgroundColor: '#F57920', textAlign: 'center' }}>
-            <img src={AuSoccer} alt="AU Soccer Camp" style={{ width: '1334px', height: '348px', marginTop: '30px'}} />
+            <img src={AuSoccer} alt="AU Soccer Camp" style={{ width: '67vw', height: '33vh', marginTop: '30px'}} />
             <h1 style={{marginBottom: "10px"}}>{currentYear} Anderson University Soccer Camp Player Evaluation</h1>
             
         </header>
