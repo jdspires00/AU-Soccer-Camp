@@ -1,16 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, setDoc, addDoc } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD1mzW9ZvczpDKV3-bGzdcJgweEsM9XJiE",
-  authDomain: "au-soccer-camp.firebaseapp.com",
-  projectId: "au-soccer-camp",
-  storageBucket: "gs://au-soccer-camp.appspot.com",
-  messagingSenderId: "276472737768",
-  appId: "1:276472737768:web:e94d4f068c29ba74ddbe5d",
+  apiKey: "AIzaSyC_Zyo3JAF8m1VNZtSImm3uewf71wNmSFc",
+  authDomain: "au-soccer-camp-83519.firebaseapp.com",
+  projectId: "au-soccer-camp-83519",
+  storageBucket: "au-soccer-camp-83519.appspot.com",
+  messagingSenderId: "546922932509",
+  appId: "1:546922932509:web:2bf32bf24d461cda5a19f4",
+  measurementId: "G-JM9MX1TK85"
 };
 
 // Initialize Firebase

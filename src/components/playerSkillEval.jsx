@@ -4,36 +4,38 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import { RadioButton } from 'primereact/radiobutton';
 import CoachCamperDropdown from './coachAndPlayer';
 import { db } from '../firebase';
-import { collection, addDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, setDoc, doc, updateDoc } from 'firebase/firestore';
 
 function PlayerSkillEval() {
-  const [techSkills, setTechSkills] = useState({
+  const [technicalSkills, setTechnicalSkills] = useState({
     dribbling: null,
     shooting: null,
     passing: null,
     vision: null,
     touch: null,
   });
-  const [nonTechSkills, setNonTechSkills] = useState({
+  const [nonTechnicalSkills, setNonTechnicalSkills] = useState({
     communication: null,
     workEthic: null,
     teamPlayer: null,
     sportsmanship: null,
   });
 
-  const [comments, setComments] = useState('');
-  const [techComments, setTechComments] = useState('');
+  const [nonTechnicalComments, setNonTechnicalComments] = useState('');
+  const [technicalComments, setTechnicalComments] = useState('');
   const [selectedCoach, setSelectedCoach] = useState(null);
   const [selectedCamper, setSelectedCamper] = useState(null);
   const [isGoalie, setIsGoalie] = useState(false);
 
   const handleTechSkillChange = (e, skill) => {
-    setTechSkills({ ...techSkills, [skill]: e.value });
+    setTechnicalSkills({ ...technicalSkills, [skill]: e.value });
   };
 
   const handleNonTechSkillChange = (e, skill) => {
-    setNonTechSkills({ ...nonTechSkills, [skill]: e.value });
+    setNonTechnicalSkills({ ...nonTechnicalSkills, [skill]: e.value });
   };
+
+  const submittableSelectedCamper = selectedCamper ? selectedCamper.replace(/\s/g, '') : null;
 
   const handleSubmit = async () => {
     if (!selectedCamper) {
@@ -42,36 +44,31 @@ function PlayerSkillEval() {
     } else if (!selectedCoach) {
       alert('Please select a coach');
       return;
-    } else if (!techSkills.dribbling || !techSkills.shooting || !techSkills.passing || !techSkills.vision || !techSkills.touch || !nonTechSkills.communication || !nonTechSkills.workEthic || !nonTechSkills.teamPlayer || !nonTechSkills.sportsmanship) {
+    } else if (!technicalSkills.dribbling || !technicalSkills.shooting || !technicalSkills.passing || !technicalSkills.vision || !technicalSkills.touch || !nonTechnicalSkills.communication || !nonTechnicalSkills.workEthic || !nonTechnicalSkills.teamPlayer || !nonTechnicalSkills.sportsmanship) {
       alert('Please fill in all skill levels');
       return;
-    } else if (!comments || !techComments) {
+    } else if (!nonTechnicalComments || !technicalComments) {
       alert('Please fill in all comments');
       return;
     } else {
       console.log('Submitting evaluation for:', selectedCamper);
+      try{
+        //console log the url we are sending to in firebase
+        const docRef = doc(db, "submissions", `PlayerSkillEvaluationFor${submittableSelectedCamper}`)
 
-      const submittableSelectedCamper = selectedCamper.replace(/ /g, '');
-      
-      //console log the url we are sending to in firebase
-      console.log('collection(db, PlayerSkillEvaluations)', doc(db, 'PlayerSkillEvaluations', 'submissions'))
-      const submissions = doc(db, 'PlayerSkillEvaluations', 'submissions');
-
-      await updateDoc(submissions, {
-        selectedCamper: selectedCamper,
-        coachName: selectedCoach,
-        goalkeeper: isGoalie ? 'Goalie' : 'Field Player',
-        techSkills: techSkills,
-        techComments: techComments,
-        nonTechSkills: nonTechSkills,
-        comments: comments,
-      })
-        .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-          console.error("Error adding document: ", error);
+        await setDoc(docRef, {
+          selectedCamper: selectedCamper,
+          coachName: selectedCoach.coach,
+          goalkeeper: isGoalie ? 'Goalie' : 'Field Player',
+          technicalSkills: technicalSkills,
+          technicalComments: technicalComments,
+          nonTechnicalSkills: nonTechnicalSkills,
+          nonTechnicalcomments: nonTechnicalComments,
         });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
         //refresh the page
         window.location.reload();
     }
@@ -84,7 +81,7 @@ function PlayerSkillEval() {
       <div style={{alignItems:'center'}}>
         <Button 
           label="Coach Fridley/Coach Derrick" 
-          style={{left:"85%"}}
+          style={{left:"43%"}}
           onClick={() => window.location.href = '/coachPage'}
         />
         <div style={{textAlign:'center'}}>
@@ -126,7 +123,7 @@ function PlayerSkillEval() {
                 name="dribbling"
                 value={level}
                 onChange={(e) => handleTechSkillChange(e, 'dribbling')}
-                checked={techSkills.dribbling === level}
+                checked={technicalSkills.dribbling === level}
               />
               <label htmlFor={`dribbling-${level}`}>{level}</label>
             </div>
@@ -141,7 +138,7 @@ function PlayerSkillEval() {
                 name="shooting"
                 value={level}
                 onChange={(e) => handleTechSkillChange(e, 'shooting')}
-                checked={techSkills.shooting === level}
+                checked={technicalSkills.shooting === level}
               />
               <label htmlFor={`shooting-${level}`}>{level}</label>
             </div>
@@ -156,7 +153,7 @@ function PlayerSkillEval() {
                 name="passing"
                 value={level}
                 onChange={(e) => handleTechSkillChange(e, 'passing')}
-                checked={techSkills.passing === level}
+                checked={technicalSkills.passing === level}
               />
               <label htmlFor={`passing-${level}`}>{level}</label>
             </div>
@@ -171,7 +168,7 @@ function PlayerSkillEval() {
                 name="vision"
                 value={level}
                 onChange={(e) => handleTechSkillChange(e, 'vision')}
-                checked={techSkills.vision === level}
+                checked={technicalSkills.vision === level}
               />
               <label htmlFor={`vision-${level}`}>{level}</label>
             </div>
@@ -186,7 +183,7 @@ function PlayerSkillEval() {
                 name="touch"
                 value={level}
                 onChange={(e) => handleTechSkillChange(e, 'touch')}
-                checked={techSkills.touch === level}
+                checked={technicalSkills.touch === level}
               />
               <label htmlFor={`touch-${level}`}>{level}</label>
             </div>
@@ -195,8 +192,8 @@ function PlayerSkillEval() {
         <div className='commentField'>
           <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
           <InputTextarea
-            value={techComments}
-            onChange={(e) => setTechComments(e.target.value)}
+            value={technicalComments}
+            onChange={(e) => setTechnicalComments(e.target.value)}
             rows={5}
             cols={30}
             style={{marginLeft:'41%'}}
@@ -214,7 +211,7 @@ function PlayerSkillEval() {
                 name="communication"
                 value={level}
                 onChange={(e) => handleNonTechSkillChange(e, 'communication')}
-                checked={nonTechSkills.communication === level}
+                checked={nonTechnicalSkills.communication === level}
               />
               <label htmlFor={`communication-${level}`}>{level}</label>
             </div>
@@ -229,7 +226,7 @@ function PlayerSkillEval() {
                 name="workEthic"
                 value={level}
                 onChange={(e) => handleNonTechSkillChange(e, 'workEthic')}
-                checked={nonTechSkills.workEthic === level}
+                checked={nonTechnicalSkills.workEthic === level}
               />
               <label htmlFor={`workEthic-${level}`}>{level}</label>
             </div>
@@ -244,7 +241,7 @@ function PlayerSkillEval() {
                 name="teamPlayer"
                 value={level}
                 onChange={(e) => handleNonTechSkillChange(e, 'teamPlayer')}
-                checked={nonTechSkills.teamPlayer === level}
+                checked={nonTechnicalSkills.teamPlayer === level}
               />
               <label htmlFor={`teamPlayer-${level}`}>{level}</label>
             </div>
@@ -259,7 +256,7 @@ function PlayerSkillEval() {
                 name="sportsmanship"
                 value={level}
                 onChange={(e) => handleNonTechSkillChange(e, 'sportsmanship')}
-                checked={nonTechSkills.sportsmanship === level}
+                checked={nonTechnicalSkills.sportsmanship === level}
               />
               <label htmlFor={`sportsmanship-${level}`}>{level}</label>
             </div>
@@ -269,8 +266,8 @@ function PlayerSkillEval() {
       <div className='commentField'>
           <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
           <InputTextarea
-            value={comments}
-            onChange={(e) => setComments(e.target.value)}
+            value={nonTechnicalComments}
+            onChange={(e) => setNonTechnicalComments(e.target.value)}
             rows={5}
             cols={30}
             style={{marginLeft:'41%'}}
