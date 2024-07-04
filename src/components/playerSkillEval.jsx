@@ -82,7 +82,7 @@ function PlayerSkillEval() {
         <Button 
           label="Coach Fridley/Coach Derrick" 
           style={{left:"43%"}}
-          onClick={() => window.location.href = '/coachPage'}
+          onClick={() => window.location.hash = '/coachPage'}
         />
         <div style={{textAlign:'center'}}>
           <CoachCamperDropdown
@@ -194,9 +194,8 @@ function PlayerSkillEval() {
           <InputTextarea
             value={technicalComments}
             onChange={(e) => setTechnicalComments(e.target.value)}
-            rows={5}
+            rows={15}
             cols={30}
-            style={{marginLeft:'41%'}}
           />
         </div>
       </div>
@@ -268,9 +267,8 @@ function PlayerSkillEval() {
           <InputTextarea
             value={nonTechnicalComments}
             onChange={(e) => setNonTechnicalComments(e.target.value)}
-            rows={5}
+            rows={15}
             cols={30}
-            style={{marginLeft:'41%'}}
           />
         </div>
       <Button label="Submit" onClick={handleSubmit} style={{marginLeft: '47%'}} />

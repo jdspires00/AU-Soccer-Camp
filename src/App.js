@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
 import PlayerSkillEval from './components/playerSkillEval';
 import CoachPage from './pages/coachPage';
