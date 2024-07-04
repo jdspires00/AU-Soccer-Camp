@@ -78,12 +78,13 @@ function PlayerSkillEval() {
 
   return (
     <div>
-      <div style={{alignItems:'center'}}>
+      <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
         <Button 
           label="Coach Fridley/Coach Derrick" 
-          style={{left:"43%"}}
           onClick={() => window.location.hash = '/coachPage'}
         />
+      </div>
+      <div>
         <div style={{textAlign:'center'}}>
           <CoachCamperDropdown
             setSelectCoach={setSelectedCoach}
@@ -191,12 +192,15 @@ function PlayerSkillEval() {
         </div>
         <div className='commentField'>
           <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
-          <InputTextarea
-            value={technicalComments}
-            onChange={(e) => setTechnicalComments(e.target.value)}
-            rows={15}
-            cols={30}
-          />
+          <div style={{display:'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '32px'}}>
+            <InputTextarea
+              value={technicalComments}
+              onChange={(e) => setTechnicalComments(e.target.value)}
+              rows={5}
+              cols={30}
+              style={{alignContent:'center'}}
+            />
+          </div>
         </div>
       </div>
       <h3 className='separator' style={{textAlign:'center'}}>Non-Technical Skill Evaluation</h3>
@@ -264,14 +268,18 @@ function PlayerSkillEval() {
       </div>
       <div className='commentField'>
           <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
-          <InputTextarea
-            value={nonTechnicalComments}
-            onChange={(e) => setNonTechnicalComments(e.target.value)}
-            rows={15}
-            cols={30}
-          />
+          <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <InputTextarea
+              value={nonTechnicalComments}
+              onChange={(e) => setNonTechnicalComments(e.target.value)}
+              rows={5}
+              cols={30}
+            />
+          </div>
         </div>
-      <Button label="Submit" onClick={handleSubmit} style={{marginLeft: '47%'}} />
+      <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <Button label="Submit" onClick={handleSubmit} style={{ marginTop: '16px', marginBottom:'16px'}} />
+      </div>
     </div>
   );
 };
