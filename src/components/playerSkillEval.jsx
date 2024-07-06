@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { RadioButton } from 'primereact/radiobutton';
 import CoachCamperDropdown from './coachAndPlayer';
 import { db } from '../firebase';
-import { collection, setDoc, doc, updateDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 function PlayerSkillEval() {
   const [technicalSkills, setTechnicalSkills] = useState({
@@ -51,10 +51,8 @@ function PlayerSkillEval() {
       alert('Please fill in all comments');
       return;
     } else {
-      console.log('Submitting evaluation for:', selectedCamper);
-      try{
-        //console log the url we are sending to in firebase
-        const docRef = doc(db, "submissions", `PlayerSkillEvaluationFor${submittableSelectedCamper}`)
+      try {
+        const docRef = doc(db, "submissions", `PlayerSkillEvaluationFor${submittableSelectedCamper}`);
 
         await setDoc(docRef, {
           selectedCamper: selectedCamper,
@@ -69,10 +67,77 @@ function PlayerSkillEval() {
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-        //refresh the page
-        window.location.reload();
+      //refresh the page
+      window.location.reload();
     }
   };
+
+  const handleSaveProgress = async () => {
+    if (!selectedCoach) {
+      alert('Please select a coach');
+      return;
+    } else if (!selectedCamper) {
+      alert('Please select a camper');
+      return;
+    } else {
+      try {
+        const docRef = doc(db, "InProgressForms", `InProgressSubmssionFor${submittableSelectedCamper}`);
+
+        await setDoc(docRef, {
+          selectedCamper: selectedCamper,
+          coachName: selectedCoach.coach,
+          goalkeeper: isGoalie ? 'Goalie' : 'Field Player',
+          technicalSkills: technicalSkills,
+          technicalComments: technicalComments,
+          nonTechnicalSkills: nonTechnicalSkills,
+          nonTechnicalcomments: nonTechnicalComments,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+      //refresh the page
+      window.location.reload();
+    }
+  };
+
+  const fetchInProgressSubmission = async (camper) => {
+    if (!camper) return;
+
+    const docRef = doc(db, "InProgressForms", `InProgressSubmssionFor${camper.replace(/\s/g, '')}`);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      setSelectedCoach({ coach: data.coachName });
+      setIsGoalie(data.goalkeeper === 'Goalie');
+      setTechnicalSkills(data.technicalSkills);
+      setTechnicalComments(data.technicalComments);
+      setNonTechnicalSkills(data.nonTechnicalSkills);
+      setNonTechnicalComments(data.nonTechnicalcomments);
+    } else {
+      // Clear the form if no in-progress submission is found
+      setTechnicalSkills({
+        dribbling: null,
+        shooting: null,
+        passing: null,
+        vision: null,
+        touch: null,
+      });
+      setNonTechnicalSkills({
+        communication: null,
+        workEthic: null,
+        teamPlayer: null,
+        sportsmanship: null,
+      });
+      setTechnicalComments('');
+      setNonTechnicalComments('');
+    }
+  };
+
+  useEffect(() => {
+    fetchInProgressSubmission(selectedCamper);
+  }, [selectedCamper]);
 
   const skillLevels = ["1 - Needs Attention", "2 - Average", "3 - Good", "4 - Very Good", "5 - Outstanding"];
 
@@ -267,18 +332,19 @@ function PlayerSkillEval() {
         </div>
       </div>
       <div className='commentField'>
-          <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
-          <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
-            <InputTextarea
-              value={nonTechnicalComments}
-              onChange={(e) => setNonTechnicalComments(e.target.value)}
-              rows={5}
-              cols={30}
-            />
-          </div>
+        <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Non-Technical Skills</h4>
+        <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <InputTextarea
+            value={nonTechnicalComments}
+            onChange={(e) => setNonTechnicalComments(e.target.value)}
+            rows={5}
+            cols={30}
+          />
         </div>
+      </div>
       <div style={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <Button label="Submit" onClick={handleSubmit} style={{ marginTop: '16px', marginBottom:'16px'}} />
+        <Button label="Submit" onClick={handleSubmit} style={{ marginTop: '16px', marginBottom:'16px', marginRight:"24px", marginLeft:"-8px"}} />
+        <Button label="Save Progress" onClick={handleSaveProgress} style={{ marginTop: '16px', marginBottom:'16px'}} />
       </div>
     </div>
   );

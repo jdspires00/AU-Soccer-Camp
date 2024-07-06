@@ -13,6 +13,8 @@
     "@types/react-dom": "^18.2.18",
     "csv": "^6.3.9",
     "firebase": "^10.12.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "papaparse": "^5.4.1",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
