@@ -14,6 +14,17 @@ function PlayerSkillEval() {
     vision: null,
     touch: null,
   });
+  const [goalieSkills, setGoalieSkills] = useState({
+    distribution: null,
+    shotStopping: null,
+    highBalls: null,
+    tippingAndPunching: null,
+    angles: null,
+    ballLinePositioning: null,
+    diving: null,
+    footwork: null,
+    boxNumbers: null,
+  });
   const [nonTechnicalSkills, setNonTechnicalSkills] = useState({
     communication: null,
     workEthic: null,
@@ -28,7 +39,11 @@ function PlayerSkillEval() {
   const [isGoalie, setIsGoalie] = useState(false);
 
   const handleTechSkillChange = (e, skill) => {
-    setTechnicalSkills({ ...technicalSkills, [skill]: e.value });
+    if (isGoalie) {
+      setGoalieSkills({ ...goalieSkills, [skill]: e.value });
+    } else {
+      setTechnicalSkills({ ...technicalSkills, [skill]: e.value });
+    }
   };
 
   const handleNonTechSkillChange = (e, skill) => {
@@ -44,7 +59,16 @@ function PlayerSkillEval() {
     } else if (!selectedCoach) {
       alert('Please select a coach');
       return;
-    } else if (!technicalSkills.dribbling || !technicalSkills.shooting || !technicalSkills.passing || !technicalSkills.vision || !technicalSkills.touch || !nonTechnicalSkills.communication || !nonTechnicalSkills.workEthic || !nonTechnicalSkills.teamPlayer || !nonTechnicalSkills.sportsmanship) {
+    } else if ((!technicalSkills.dribbling || !technicalSkills.shooting || !technicalSkills.passing || !technicalSkills.vision || !technicalSkills.touch) && !isGoalie) {
+      console.log(isGoalie)
+      alert('Please fill in all skill levels');
+      return;
+    } else if ((!goalieSkills.distribution || !goalieSkills.shotStopping || !goalieSkills.highBalls || !goalieSkills.tippingAndPunching || !goalieSkills.angles || !goalieSkills.ballLinePositioning || !goalieSkills.diving || !goalieSkills.footwork || !goalieSkills.boxNumbers) && isGoalie) {
+      console.log(isGoalie)
+      console.log(goalieSkills)
+      alert('Please fill in all goalie skill levels');
+      return;
+    } else if (!nonTechnicalSkills.communication || !nonTechnicalSkills.workEthic || !nonTechnicalSkills.teamPlayer || !nonTechnicalSkills.sportsmanship) {
       alert('Please fill in all skill levels');
       return;
     } else if (!nonTechnicalComments || !technicalComments) {
@@ -58,7 +82,7 @@ function PlayerSkillEval() {
           selectedCamper: selectedCamper,
           coachName: selectedCoach.coach,
           goalkeeper: isGoalie ? 'Goalie' : 'Field Player',
-          technicalSkills: technicalSkills,
+          technicalSkills: isGoalie ? goalieSkills : technicalSkills,
           technicalComments: technicalComments,
           nonTechnicalSkills: nonTechnicalSkills,
           nonTechnicalcomments: nonTechnicalComments,
@@ -87,7 +111,7 @@ function PlayerSkillEval() {
           selectedCamper: selectedCamper,
           coachName: selectedCoach.coach,
           goalkeeper: isGoalie ? 'Goalie' : 'Field Player',
-          technicalSkills: technicalSkills,
+          technicalSkills: isGoalie ? goalieSkills : technicalSkills,
           technicalComments: technicalComments,
           nonTechnicalSkills: nonTechnicalSkills,
           nonTechnicalcomments: nonTechnicalComments,
@@ -124,6 +148,17 @@ function PlayerSkillEval() {
         vision: null,
         touch: null,
       });
+      setGoalieSkills({
+        distribution: null,
+        shotStopping: null,
+        highBalls: null,
+        tippingAndPunching: null,
+        angles: null,
+        ballLinePositioning: null,
+        diving: null,
+        footwork: null,
+        boxNumbers: null,
+      });
       setNonTechnicalSkills({
         communication: null,
         workEthic: null,
@@ -139,7 +174,28 @@ function PlayerSkillEval() {
     fetchInProgressSubmission(selectedCamper);
   }, [selectedCamper]);
 
+  const fieldPlayerSkills = [
+    { skill: 'dribbling', label: 'Dribbling' },
+    { skill: 'shooting', label: 'Shooting' },
+    { skill: 'passing', label: 'Passing' },
+    { skill: 'vision', label: 'Vision' },
+    { skill: 'touch', label: 'Touch' },
+  ];
+
+  const goalkeeperSkills = [
+    { skill: 'distribution', label: 'Distribution' },
+    { skill: 'shotStopping', label: 'Shot Stopping' },
+    { skill: 'highBalls', label: 'High Balls' },
+    { skill: 'tippingAndPunching', label: 'Tipping and Punching' },
+    { skill: 'angles', label: 'Angles' },
+    { skill: 'ballLinePositioning', label: 'Ball Line Positioning' },
+    { skill: 'diving', label: 'Diving' },
+    { skill: 'footwork', label: 'Footwork' },
+    { skill: 'boxNumbers', label: 'Box Numbers' },
+  ];
+
   const skillLevels = ["1 - Needs Attention", "2 - Average", "3 - Good", "4 - Very Good", "5 - Outstanding"];
+  const boxNumbersLevels = ["6 Yards", "9 Yards", "12 Yards", "18 Yards", "18+ Yards", "Not Applicable"];
 
   return (
     <div>
@@ -180,81 +236,23 @@ function PlayerSkillEval() {
       </div>
       <h3 className='separator' style={{textAlign:'center'}}>Player Technical Skill Evaluation</h3>
       <div className="skill-evaluation">
-        <div className="skill">
-          <h4 style={{textAlign:'center'}}>DRIBBLING</h4>
-          {skillLevels.map((level) => (
-            <div key={level} className="p-field-radiobutton radList">
-              <RadioButton
-                inputId={`dribbling-${level}`}
-                name="dribbling"
-                value={level}
-                onChange={(e) => handleTechSkillChange(e, 'dribbling')}
-                checked={technicalSkills.dribbling === level}
-              />
-              <label htmlFor={`dribbling-${level}`}>{level}</label>
-            </div>
-          ))}
-        </div>
-        <div className="skill">
-          <h4 style={{textAlign:'center'}}>SHOOTING</h4>
-          {skillLevels.map((level) => (
-            <div key={level} className="p-field-radiobutton radList">
-              <RadioButton
-                inputId={`shooting-${level}`}
-                name="shooting"
-                value={level}
-                onChange={(e) => handleTechSkillChange(e, 'shooting')}
-                checked={technicalSkills.shooting === level}
-              />
-              <label htmlFor={`shooting-${level}`}>{level}</label>
-            </div>
-          ))}
-        </div>
-        <div className="skill">
-          <h4 style={{textAlign:'center'}}>PASSING</h4>
-          {skillLevels.map((level) => (
-            <div key={level} className="p-field-radiobutton radList">
-              <RadioButton
-                inputId={`passing-${level}`}
-                name="passing"
-                value={level}
-                onChange={(e) => handleTechSkillChange(e, 'passing')}
-                checked={technicalSkills.passing === level}
-              />
-              <label htmlFor={`passing-${level}`}>{level}</label>
-            </div>
-          ))}
-        </div>
-        <div className="skill">
-          <h4 style={{textAlign:'center'}}>VISION</h4>
-          {skillLevels.map((level) => (
-            <div key={level} className="p-field-radiobutton radList">
-              <RadioButton
-                inputId={`vision-${level}`}
-                name="vision"
-                value={level}
-                onChange={(e) => handleTechSkillChange(e, 'vision')}
-                checked={technicalSkills.vision === level}
-              />
-              <label htmlFor={`vision-${level}`}>{level}</label>
-            </div>
-          ))}
-        </div>
-        <div className="skill">
-          <h4 style={{textAlign:'center'}}>TOUCH</h4>
-          {skillLevels.map((level) => (
-            <div key={level} className="p-field-radiobutton radList">
-              <RadioButton
-                inputId={`touch-${level}`}
-                name="touch"
-                value={level}
-                onChange={(e) => handleTechSkillChange(e, 'touch')}
-                checked={technicalSkills.touch === level}
-              />
-              <label htmlFor={`touch-${level}`}>{level}</label>
-            </div>
-          ))}
-        </div>
+        {(isGoalie ? goalkeeperSkills : fieldPlayerSkills).map(({ skill, label }) => (
+          <div className="skill" key={skill}>
+            <h4 style={{textAlign:'center'}}>{label.toUpperCase()}</h4>
+            {(isGoalie && skill === 'boxNumbers' ? boxNumbersLevels : skillLevels).map((level) => (
+              <div key={level} className="p-field-radiobutton radList">
+                <RadioButton
+                  inputId={`${skill}-${level}`}
+                  name={skill}
+                  value={level}
+                  onChange={(e) => handleTechSkillChange(e, skill)}
+                  checked={(isGoalie ? goalieSkills[skill] : technicalSkills[skill]) === level}
+                />
+                <label htmlFor={`${skill}-${level}`}>{level}</label>
+              </div>
+            ))}
+          </div>
+        ))}
         <div className='commentField'>
           <h4 style={{textAlign:'center'}}>Recommendations from the coach on what to work on at home to improve your Technical Skills</h4>
           <div style={{display:'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '32px'}}>
