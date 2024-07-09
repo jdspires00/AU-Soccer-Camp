@@ -1,22 +1,114 @@
 [
   {
-    "coach": "Coach Carter",
-    "campers": ["John Doe", "Jane Smith", "Emily Davis", "Mike Brown", "Lisa White"]
+    "coach": "Coach Barleycorn",
+    "campers": ["Abhimanyu Sinha", "Alex Lerner", "Alexander Knepp", "Alexander Schaewe", "Devin Henson", "Jaxson Lozier", "Jones Voelkel", "Keaton Grayson", "Kevin Henson Jr.", "Keygan Robinson", "Levi Pharis", "Micah Whitt", "Morrison Cappocia", "Owen Fant", "Parker Rich", "Xander Bostick", "Xander Harrick", "Zy Turner"]
   },
   {
-    "coach": "Coach Taylor",
-    "campers": ["Tom Wilson", "Anna Bell", "Kevin Long", "Sarah Green", "Cristiano Ronaldo"]
+    "coach": "Coach Bennison",
+    "campers": ["Aiden Harden", "Benny Naegeli", "Brody Osburn", "Cameron Wayman", "Canaan Hoeppner", "Chance Rhule", "Coltyn Porter", "Conner Castillo", "Crew Woodfill", "Daxin Rinker", "Eli Bauters", "Jake Wilson", "Justin Schnitzius", "Osazuwa Oviawe", "Ryan Elorreaga", "Tyler Kroeber"]
   },
   {
-    "coach": "Coach Smith",
-    "campers": ["Chris King", "Rachel Casey", "Steve Marsh", "Nick Grey", "Alice Blue"]
+    "coach": "Coach Bobby",
+    "campers": ["Abel Jarrett", "Adam Stout", "Aiden Cookston", "Amelia North", "Anson Murphy", "Barrett Shinn", "Boston Beatty", "Brenley Benefell", "Charles Trimmel", "Charlotte", "Chandler Butler", "Drake Blair", "Dustin Schmidt", "Eddie Schickel", "Ellie Trigilio", "Ely Wetzel", "Emma Thurston", "Gabriella Henderson", "Henry Barleycorn", "Ian Kivett", "Jackson Chappell", "Jacob Wilson", "James Pratt", "Jamiah Perry", "Joel Dollarhide", "Jonah Allen", "Kamden Perry", "Kamdin Harrold", "Keegan Rauch", "Kristal Waak", "Luke LeBeau", "Maximus Halley", "Quentin Marlin", "Reece Melvin", "Sami Lahlou", "Samuel Vnuk", "Seth da Costa", "Will Zercher", "Wyatt Nivens", "Zach Darr", "Zach Holmes"]
   },
   {
-    "coach": "Coach Johnson",
-    "campers": ["Laura West", "George Best", "Matt Bright", "Jenny Stone", "Lee Dixon"]
+    "coach": "Coach Bussen",
+    "campers": ["Addison Mann", "Alexandria Parker", "Anna Whybrew", "Arden Conway", "Audrey McAllister", "Brinley Sargent", "Brooke Pape", "Cambrey Branford", "Emma Parker", "Finley Moore", "Grace Clevenger", "Lexi Kemper", "Makenzie Treeter", "Maryn Roeder", "Mika Balmaseda", "Sara Behler", "Savanna Kirlin", "Tynleigh Wattenbarger", "Tali Reyes"]
   },
   {
-    "coach": "Coach Lee",
-    "campers": ["Brian Hall", "Susan Fox", "Olivia Hunt", "Mark Duke", "Brendan Aaronson"]
+    "coach": "Coach Cook",
+    "campers": ["Brandon Carter", "Chandler Butler", "Cooper Hua", "Declan Dravis", "Heather Hoeppner", "Henry Simmons", "Ian Kivett", "Jacob de Irala", "Joel Woods", "Landon Shade", "Mason Schuller", "Max Steeno", "Owen Hillebrand", "Ryder Smith", "Sebastian Negron", "Wyatt Bachman", "Westyn Wattenberger"]
+  },
+  {
+    "coach": "Coach Davy",
+    "campers": ["Collyn Crofton", "Anderson Hogue", "Blake Mazza", "Cedric Dixon-Beam", "Dominick Price", "Ezra Dixon-Beam", "Gavin Tooley", "Henry Rector", "Juan Michael Rodriguez", "Kayden Mccune", "Luke Rich", "Maddux Kenyon", "Nihgel German"]
+  },
+  {
+    "coach": "Coach DeAugustino",
+    "campers": ["Addyson Jolliff", "Amelia Panning", "Avery Long", "Cameron McNeill", "Danielle Walters", "Emma", "Haylen Kaiser", "Isabella Arthur", "Kylee Geesaman", "Mackenzie Iskander", "Madeline Delucenay", "Olivia Valentine", "Presley Snyder", "Quinn Sutter", "Sloane Badgett"]
+  },
+  {
+    "coach": "Coach Gerike",
+    "campers": ["Ben Bray", "Braeden O'Keefe", "Bryce Bush", "Cole Keenan", "Dexter Lozier", "Ethan Kihiu", "Giovanny Rios", "Liam Day", "Michael Petitte", "Noah Diaz de Leon", "Trevor Bush", "Zachary Ruiz"]
+  },
+  {
+    "coach": "Coach Grubbs",
+    "campers": ["Chad Smith", "Cono Barbera", "Dylan Baker", "Elijah Scott", "Jack Holaday", "Jakob Prigg", "Jude McCreery", "Kael Waterman", "Mack Muterspaugh", "Nolan Bates", "Sam Johnson", "Seth Evans", "Shiloh Ramos", "Zachary Hawkins"]
+  },
+  {
+    "coach": "Coach Guthrie",
+    "campers": ["Brody Walton", "Drew Petro", "Evan Elliott", "Fielding Thiele", "Garrett Kelly", "Hudson Hall", "Hudson Martz", "Jacen Morales", "Keagen Rauch", "Kooper Gross", "Levi Davy", "Marek Spolyar", "Noah Waak", "Walter Brazil", "Will Zercher", "Zachary Holmes"]
+  },
+  {
+    "coach": "Coach Gwaltney",
+    "campers": ["Ava Ewen", "Brinly Rhodes", "Gabriella Gutierrez", "Gretchen Golden", "Hope Lancaster", "Kate Reyes", "Lena Smiley", "Madison Burkett", "Maisy Crawford", "Navya Eckert", "Vivi Burkett", "Reese Cassel"]
+  },
+  {
+    "coach": "Coach Hawkins",
+    "campers": ["Christabella Santiago Ortiz", "Emma Gordon", "Isabella Heintzelman", "Josette Forcum", "Julianna Price", "Kira Schmidt", "Lyla Negron", "Miriam Neyland", "Quinn Hawkins", "Sadie Schmidt", "Savannah Albert"]
+  },
+  {
+    "coach": "Coach Makesi",
+    "campers": ["Brinley Benefiel", "Brynley Reitmeier", "Carley Cobb", "Delaney Beaver", "Disney Wright", "Finley Dowling", "KayLynn Durden", "Kinsley Parraga", "Landrey Mills", "LeiLani Robinson", "Makaylah Rojas", "Quinn Muterspaugh", "Ryla Stephenson", "Sophia Ford", "Vivian Neyland", "Zoe Bartlett"]
+  },
+  {
+    "coach": "Coach Myhre",
+    "campers": ["Allie Cunningham", "Ariel Walker", "Breanna Batley", "Camilla Ensign", "Emma Cales", "Greer Stamper", "Hannah Sund", "Isis Duszynski", "Joy Sweeny", "Juliana Maltese", "Karen Sun", "Katie Adkins", "Lauren Harrison", "Lilyana Horning", "Madalyn Mason", "Maddison Rampulla", "Mae Garriott", "Mafer Ramos", "Marisol Colaj", "Ninah Nazer", "Norah Osborne", "Olivia Stout", "Remie Boyd", "Rosalinda Colaj", "Tilia Schramm"]
+  },
+  {
+    "coach": "Coach Nelson",
+    "campers": ["Carson Crider", "Drew Smith", "Elliot Hillebrand", "Ethan Greulich", "Gavin McLaughlin", "Jaxon Roam", "Jordan Farmer", "Joseph Dunasky", "Landon Schwertfeger", "Levi Wiley", "Max Burkman", "Nolan Bozarth", "Paxton Arms", "Ryan Steeno", "Samuel Rice", "Samuel Woods"]
+  },
+  {
+    "coach": "Coach Poff",
+    "campers": ["Addison Enzinger", "Annabel Eckstein", "Bailey Feldmann", "Charleigh Schnitzius", "Gabriella Bailey", "Isabella Elorreaga", "Jadyn Kendall", "Kendall Piersall", "Lila Teaters", "Marissa McGarrell", "Sammi", "Sophia Stayte", "Sydney Wright", "Taylor Elmore"]
+  },
+  {
+    "coach": "Coach Porras",
+    "campers": ["Aiden Shawver", "Beckett Hapner", "Bruce Lozier", "Dexter Shane", "Ignatius Franklin", "Liam Anderson", "Liam Simerly", "Oliver Crowell", "Oliver Haste", "Theo Bauters", "Weston Hoover", "Westyn Wattenbarger", "Zach Reinbold"]
+  },
+  {
+    "coach": "Coach Redman",
+    "campers": ["Arden Frank", "Acelyn Truman", "Addie Krieg", "Addison Crosby", "Audra Spicer", "Avery Gordon", "Corrine Williamson", "Dylan Cunningham", "Lucy Lawrence", "Makayla Kelly", "Makenzi Morgan", "Oluwatunmise Olasakin", "Sophia Schuerman", "Sophie Mechem", "Xarra Miller"]
+  },
+  {
+    "coach": "Coach Rowlison",
+    "campers": ["Arlo Keidel", "Aaron Hunt", "Aiden Amburgey", "Asher Ramos", "Beck Anderson", "Evan Golden", "Hollie Wheatley", "Isaac Hast", "Liam Greiner", "Matthew Short", "Quinten Harlan", "Sammy Naegeli", "Sawyer Enyart", "Steele Austel", "Wilson Gramelspacher"]
+  },
+  {
+    "coach": "Coach Shelton",
+    "campers": ["Amelia North", "Brooklyn Geesaman", "Elise Prewitt", "Ellie Maniago", "Genevieve Jennings", "Josie Gaidoo", "Kamri Richmond", "Lauren Kemp", "Layla Simpkins", "Lily Hall", "Maddie Jarvis", "Zoe Hawkins", "Mara Peasley", "Marin Theophilus", "Mia Rodriguez", "Olivia Caldwell-Gross", "Remy Cooper"]
+  },
+  {
+    "coach": "Coach Spires",
+    "campers": ["Aiden Elmore", "Ben Holliday", "Bryce Knepp", "Caleb Bowland", "Caleb Pyecha", "Calyb Greenlee", "Charles Linneweber", "Duren Schroeder Williams", "Dylan Evans", "Erik Cortinas", "Gabriel Peters", "Gavin Hess", "Gavin Straszheim", "Joey Mazza", "John Norris", "John Powers", "Joseph Petitte", "Kaeden Putman", "Keegan Bates", "Kyler Morgan", "Mason MacEwen", "Tate Turman", "Wema Mwiindi", "Zachary DeHoff"]
+  },
+  {
+    "coach": "Coach Steeno",
+    "campers": ["Bennett Meek", "Ezra Hurwitz", "Finnley Thiele", "Hudson Curry", "Jaxon Hornak", "Jeremie Rojas", "Matthew Davy", "Matthew Weflen", "Parker Albert", "Precious Jones", "Remington Barnes", "Rucker Allen", "Weston Horvath"]
+  },
+  {
+    "coach": "Coach Thomas",
+    "campers": ["Aiden price", "Aidan Guise", "Cameron Cramer", "Collin Lynch", "Connor Lear", "Dane McPherson", "Eli Wojniak", "Eli Brown", "Everett Alvidrez", "Gavin Courtney", "Gavin Rauch", "Henry House", "Hunter Decker", "Joshua Caldwell-Gross", "Landon Cook", "Liam Farmer", "Owen Morey", "Santiago Ramirez", "William Staifer"]
+  },
+  {
+    "coach": "Coach Vaughn",
+    "campers": ["Cameron Shea", "Graham Dengmanivanh", "Harrison Stanski", "Jackson Cross", "Jackson Schoeff", "Kamden Yang", "Levi Mann", "Leyton Bales", "Liam Hudson", "Maddox Bailey", "Maxwell Rosen", "Ryder Krleski", "Will Kopatz", "Zaki Mwiindi"]
+  },
+  {
+    "coach": "Coach Woerner",
+    "campers": ["Adesuwa Oviawe", "Alle Poe", "Ava Szczypiorski", "Avery Lux", "Brooklyn Bozovich", "Charlotte Knick", "Charlotte Radabaugh", "Claire Drake", "Clara Davis", "Emelie Abbott", "Kate Behler", "Maddie Burkett", "Olivia Schmitt", "Stella Thompson", "Teagan Knox", "Willow Sutherland"]
+  },
+  {
+    "coach": "Coach Woodfill",
+    "campers": ["Bodie Wolfe", "Callum Girt", "Cohen Boys", "Eli Packard", "Hank Adkins", "Henry Barleycorn", "Kadence Branham", "Landon Curry", "Leo Wells", "Ryan Spalding", "Sterling Perrin", "Sylas Carter", "Ulysses Perrin", "Zac Turman"]
+  },
+  {
+    "coach": "Coach Yau",
+    "campers": ["Abram McCarty", "Alberto Tito Ramos", "Beckhym Persaud", "Brooks Batthauer", "Cecil Maltese", "Connor Cox", "Creighton Woodfill", "Daniel Schmidt", "Dexter Sams", "Gage Dargo", "Gannon Beechboard", "Henry McClain", "Jack Crozier", "Jack Stumpe", "Jackson Scheiber", "Louie Hein", "Luca Krleski", "Mason Grant", "Ty Parrish"]
+  },
+  {
+    "coach": "Coach Zellers",
+    "campers": ["Callie Cassel", "Carter Illg", "Elizabeth Rabuck", "Ella Gross", "Emma Ewen", "Julia Cockrum", "Kailyn Bachman", "Layla Eddy", "Libby Groves", "Maren Jarvis", "Mary Von Wiegandt", "Mia Mitchell", "Piper Ailes", "Rosemary Meek"]
   }
 ]
