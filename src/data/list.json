@@ -5,11 +5,11 @@
   },
   {
     "coach": "Coach Bennison",
-    "campers": ["Aiden Harden", "Benny Naegeli", "Brody Osburn", "Cameron Wayman", "Canaan Hoeppner", "Chance Rhule", "Coltyn Porter", "Conner Castillo", "Crew Woodfill", "Daxin Rinker", "Eli Bauters", "Jake Wilson", "Justin Schnitzius", "Osazuwa Oviawe", "Ryan Elorreaga", "Tyler Kroeber"]
+    "campers": ["Aiden Harden", "Benny Naegeli", "Brody Osburn", "Cameron Wayman", "Chance Rhule", "Coltyn Porter", "Conner Castillo", "Crew Woodfill", "Daxin Rinker", "Eli Bauters", "Jake Wilson", "Joey Mazza", "Justin Schnitzius", "Osazuwa Oviawe", "Ryan Elorreaga", "Tyler Kroeber"]
   },
   {
     "coach": "Coach Bobby",
-    "campers": ["Abel Jarrett", "Adam Stout", "Aiden Cookston", "Amelia North", "Anson Murphy", "Barrett Shinn", "Boston Beatty", "Brenley Benefell", "Charles Trimmel", "Charlotte", "Chandler Butler", "Drake Blair", "Dustin Schmidt", "Eddie Schickel", "Ellie Trigilio", "Ely Wetzel", "Emma Thurston", "Gabriella Henderson", "Henry Barleycorn", "Ian Kivett", "Jackson Chappell", "Jacob Wilson", "James Pratt", "Jamiah Perry", "Joel Dollarhide", "Jonah Allen", "Kamden Perry", "Kamdin Harrold", "Keegan Rauch", "Kristal Waak", "Luke LeBeau", "Maximus Halley", "Quentin Marlin", "Reece Melvin", "Sami Lahlou", "Samuel Vnuk", "Seth da Costa", "Will Zercher", "Wyatt Nivens", "Zach Darr", "Zach Holmes"]
+    "campers": ["Abel Jarrett", "Adam Stout", "Aiden Cookston", "Anson Murphy", "Barrett Shinn", "Boston Beatty", "Brenley Benefell", "Charlotte", "Chandler Butler", "Drake Blair", "Dustin Schmidt", "Eddie Schickel", "Ellie Trigilio", "Ely Wetzel", "Emma Thurston", "Gabriella Henderson", "Henry Barleycorn", "Ian Kivett", "Jacob Wilson", "James Pratt", "Joel Dollarhide", "Jonah Allen", "Kamden Perry", "Kamdin Harrold", "Keagen Rauch", "Luke LeBeau", "Makaylah Rojas", "Maximus Halley", "Sami Lahlou", "Samuel Vnuk", "Seth da Costa", "Sophia Stayde", "Will Zercher", "Wyatt Nivens", "Zach Darr", "Zach Holmes"]
   },
   {
     "coach": "Coach Bussen",
@@ -17,7 +17,7 @@
   },
   {
     "coach": "Coach Cook",
-    "campers": ["Brandon Carter", "Chandler Butler", "Cooper Hua", "Declan Dravis", "Heather Hoeppner", "Henry Simmons", "Ian Kivett", "Jacob de Irala", "Joel Woods", "Landon Shade", "Mason Schuller", "Max Steeno", "Owen Hillebrand", "Ryder Smith", "Sebastian Negron", "Wyatt Bachman", "Westyn Wattenberger"]
+    "campers": ["Brandon Carter", "Chandler Butler", "Cooper Hua", "Declan Dravis", "Logan Hoeppner", "Henry Simmons", "Ian Kivett", "Jacob de Irala", "Joel Woods", "Landon Shade", "Mason Schuller", "Max Steeno", "Owen Hillebrand", "Ryder Smith", "Sebastian Negron", "Wyatt Bachman", "Westyn Wattenberger"]
   },
   {
     "coach": "Coach Davy",
@@ -33,7 +33,7 @@
   },
   {
     "coach": "Coach Grubbs",
-    "campers": ["Chad Smith", "Cono Barbera", "Dylan Baker", "Elijah Scott", "Jack Holaday", "Jakob Prigg", "Jude McCreery", "Kael Waterman", "Mack Muterspaugh", "Nolan Bates", "Sam Johnson", "Seth Evans", "Shiloh Ramos", "Zachary Hawkins"]
+    "campers": ["Gio Barbera", "Dylan Baker", "Elijah Scott", "Jack Holaday", "Jakob Prigg", "Jude McCreery", "Kael Waterman", "Mack Muterspaugh", "Nolan Bates", "Sam Johnson", "Seth Evans", "Shiloh Ramos", "Zachary Hawkins"]
   },
   {
     "coach": "Coach Guthrie",
@@ -65,11 +65,11 @@
   },
   {
     "coach": "Coach Porras",
-    "campers": ["Aiden Shawver", "Beckett Hapner", "Bruce Lozier", "Dexter Shane", "Ignatius Franklin", "Liam Anderson", "Liam Simerly", "Oliver Crowell", "Oliver Haste", "Theo Bauters", "Weston Hoover", "Westyn Wattenbarger", "Zach Reinbold"]
+    "campers": ["Aiden Shawver", "Beckett Hapner", "Bruce Lozier", "Dexter Shane", "Ignatius Franklin", "Liam Anderson", "Liam Simerly", "Oliver Crowell", "Oliver Haste", "Theo Bauters", "Westyn Wattenbarger", "Zach Reinbold"]
   },
   {
     "coach": "Coach Redman",
-    "campers": ["Arden Frank", "Acelyn Truman", "Addie Krieg", "Addison Crosby", "Audra Spicer", "Avery Gordon", "Corrine Williamson", "Dylan Cunningham", "Lucy Lawrence", "Maddie Jarvis", "Makayla Kelly", "Makenzi Morgan", "Oluwatunmise Olasakin", "Sophia Schuerman", "Sophie Mechem", "Xarra Miller"]
+    "campers": ["Arden Frank", "Acelyn Truman", "Addie Krieg", "Addison Crosby", "Audra Spicer", "Corrine Williamson", "Dylan Cunningham", "Lucy Lawrence", "Maddie Jarvis", "Makayla Kelly", "Makenzi Morgan", "Oluwatunmise Olasakin", "Sophia Schuerman", "Sophie Mechem", "Xarra Miller"]
   },
   {
     "coach": "Coach Rowlison",
@@ -85,11 +85,11 @@
   },
   {
     "coach": "Coach Steeno",
-    "campers": ["Bennett Meek", "Ezra Hurwitz", "Finnley Thiele", "Hudson Curry", "Jaxon Hornak", "Jeremie Rojas", "Matthew Davy", "Matthew Weflen", "Parker Albert", "Precious Jones", "Remington Barnes", "Rucker Allen", "Weston Horvath"]
+    "campers": ["Bennett Meek", "Charles Trimmel", "Ezra Hurwitz", "Finnley Thiele", "Hudson Curry", "Jaxon Hornak", "Jamiah Perry", "Jeremie Rojas", "Matthew Davy", "Matthew Weflen", "Parker Albert", "Caleb Jones", "Remington Barnes", "Rucker Allen", "Weston Horvath"]
   },
   {
     "coach": "Coach Thomas",
-    "campers": ["Aiden price", "Aidan Guise", "Cameron Cramer", "Collin Lynch", "Connor Lear", "Dane McPherson", "Eli Wojniak", "Eli Brown", "Everett Alvidrez", "Gavin Courtney", "Gavin Rauch", "Henry House", "Hunter Decker", "Joshua Caldwell-Gross", "Landon Cook", "Liam Farmer", "Owen Morey", "Santiago Ramirez", "William Staifer"]
+    "campers": ["Aiden Price", "Aidan Guise", "Cameron Cramer", "Collin Lynch", "Connor Lear", "Eli Wojniak", "Gavin Courtney", "Gavin Rauch", "Henry House", "Hunter Decker", "Joshua Caldwell-Gross", "Landon Cook", "Liam Farmer", "Owen Morey", "Santiago Ramirez", "William Staifer"]
   },
   {
     "coach": "Coach Vaughn",
