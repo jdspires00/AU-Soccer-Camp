@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Deployed Application
+
+The deployed application can be accessed by anyone using the link provided here: https://ausoccercamperevaluation.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
